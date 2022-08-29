@@ -60,3 +60,26 @@ body {
    margin-right: -10px;
    z-index: 1;
 }
+
+body {
+   background-color: rebeccapurple;
+   color: white;
+   margin: 0;
+   padding: 2rem;
+}
+
+.container{
+   display: flex;
+   flex-direction: column;
+}
+
+button {
+   border: none;
+   border-radius: 5px;
+   padding: 1rem;
+   cursor: pointer;
+}
+
+h1 {
+   text-align: center;
+}

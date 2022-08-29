@@ -1,14 +1,23 @@
 import React from "react";
 import "../styles/global.scss";
 import ComponentDidUpdate from "./ComponentDidUpdate";
+import ComponentWillUnmount from "./ComponentWillUnmount";
 
-const App = () => {
-  return (
-    <div>
-      <h1>Component Did Mount and Update</h1>
-      <ComponentDidUpdate />
-    </div>
-  );
-};
+export default class App extends React.Component {
+  state = {
+    show: true,
+  };
 
-export default App;
+  toggle = () => {
+    this.setState((prevState) => ({ show: !prevState.show }));
+  };
+
+  render() {
+    return (
+      <div className="container">
+        <button onClick={this.toggle}>Toggle WindowTracker</button>
+        {this.state.show && <ComponentWillUnmount />}
+      </div>
+    );
+  }
+}
