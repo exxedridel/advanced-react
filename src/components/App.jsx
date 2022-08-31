@@ -2,22 +2,18 @@ import React from "react";
 import "../styles/global.scss";
 import ComponentDidUpdate from "./ComponentDidUpdate";
 import ComponentWillUnmount from "./ComponentWillUnmount";
+import DataFetcher from "./DataFetcher";
 
-export default class App extends React.Component {
-  state = {
-    show: true,
-  };
-
-  toggle = () => {
-    this.setState((prevState) => ({ show: !prevState.show }));
-  };
-
-  render() {
-    return (
-      <div className="container">
-        <button onClick={this.toggle}>Toggle WindowTracker</button>
-        {this.state.show && <ComponentWillUnmount />}
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div>
+      <DataFetcher url="https://swapi.dev/api/people/1">
+        {(data, loading) => {
+          return loading ? <h1>Loading...</h1> : <p>{JSON.stringify(data)}</p>;
+        }}
+      </DataFetcher>
+    </div>
+  );
 }
+
+export default App;
